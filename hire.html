@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David's Creation | Official Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --primary:#4f46e5;
+    --accent:#f59e0b;
+    --dark:#020617;
+    --card:#0f172a;
+    --light:#f8fafc;
+    --success:#22c55e;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--dark);
+    color:white;
+    overflow-x:hidden;
+}
+/* HEADER */
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    background:rgba(2,6,23,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+nav{
+    max-width:1200px;
+    margin:auto;
+    padding:18px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+.logo-box{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+.logo-text{
+    font-family:'Orbitron',sans-serif;
+    font-size:1.5rem;
+    font-weight:900;
+    color:var(--accent);
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:600;
+    transition:0.3s;
+}
+nav a:hover{
+    color:var(--accent);
+}
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:120px 20px 80px;
+    background:
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+    url('https://picsum.photos/id/1040/1920/1080');
+    background-size:cover;
+    background-position:center;
+}
+.hero-content{
+    max-width:900px;
+}
+.hero h1{
+    font-size:5rem;
+    font-family:'Orbitron',sans-serif;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+.hero p{
+    font-size:1.3rem;
+    color:#cbd5e1;
+    margin-bottom:35px;
+}
+.btn{
+    display:inline-block;
+    padding:16px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:700;
+    margin:10px;
+    transition:0.3s;
+    border:none;
+    cursor:pointer;
+    font-size:1rem;
+    font-family:inherit;
+}
+.btn-primary{
+    background:var(--accent);
+    color:black;
+}
+.btn-success{
+    background:var(--success);
+    color:white;
+}
+.btn:hover{
+    transform:scale(1.05);
+}
+/* SECTION */
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:100px 20px;
+}
+.section-title{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:60px;
+    font-family:'Orbitron',sans-serif;
+    color:var(--accent);
+}
+/* ABOUT */
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+.about-card{
+    background:var(--card);
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+/* PROJECTS */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+.project-card{
+    background:var(--card);
+    border-radius:25px;
+    overflow:hidden;
+    transition:0.4s;
+    border:1px solid rgba(255,255,255,0.08);
+}
+.project-card:hover{
+    transform:translateY(-10px);
+}
+.project-image{
+    height:220px;
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:4rem;
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+}
+.project-content{
+    padding:30px;
+}
+.project-content h3{
+    margin-bottom:15px;
+    color:var(--accent);
+}
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
+}
+.skill{
+    background:var(--card);
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+}
+.skill h3{
+    margin-top:15px;
+}
+/* CONTACT */
+.contact-box{
+    background:linear-gradient(135deg,#1e293b,#0f172a);
+    padding:50px;
+    border-radius:30px;
+    text-align:center;
+    margin-bottom:50px;
+}
+/* HIRE ME FORM */
+.hire-form{
+    background:var(--card);
+    padding:50px;
+    border-radius:30px;
+    max-width:600px;
+    margin:0 auto;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    border:1px solid rgba(255,255,255,0.08);
+}
+.hire-form h3{
+    color:var(--accent);
+    font-size:2rem;
+    margin-bottom:15px;
+    font-family:'Orbitron',sans-serif;
+    text-align:center;
+}
+.hire-form p{
+    color:#cbd5e1;
+    margin-bottom:30px;
+    text-align:center;
+}
+.hire-form input, 
+.hire-form textarea {
+    width:100%;
+    padding:15px;
+    margin-bottom:20px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.05);
+    color:white;
+    font-family:inherit;
+    font-size:1rem;
+}
+.hire-form input:focus,
+.hire-form textarea:focus{
+    outline:none;
+    border-color:var(--accent);
+}
+.hire-form input::placeholder,
+.hire-form textarea::placeholder{
+    color:#94a3b8;
+}
+.hire-form textarea{
+    resize:vertical;
+    min-height:120px;
+}
+/* FOOTER */
+footer{
+    background:#000;
+    text-align:center;
+    padding:60px 20px;
+    margin-top:80px;
+}
+@media(max-width:768px){
+    .hero h1{
+        font-size:3rem;
+    }
+    .about{
+        grid-template-columns:1fr;
+    }
+    nav{
+        justify-content:center;
+        gap:15px;
+    }
+    .section-title{
+        font-size:2.2rem;
+    }
+    .hire-form{
+        padding:30px 20px;
+    }
+    nav a{
+        margin-left:10px;
+        font-size:0.9rem;
+    }
+}
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<header>
+<nav>
+<div class="logo-box">
+<!-- LOGO -->
+<svg width="70" height="70" viewBox="0 0 200 200" fill="none">
+<circle cx="100" cy="100" r="90" fill="#4f46e5"/>
+<path d="M55 145V55H115C140 55 155 72 155 98C155 124 140 140 115 140H85V145H55Z" fill="white"/>
+<path d="M85 115H108C120 115 128 109 128 98C128 87 120 81 108 81H85V115Z" fill="#f59e0b"/>
+</svg>
+<div class="logo-text">
+David's Creation
+</div>
+</div>
+<div>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#skills">Skills</a>
+<a href="#hire">Hire Me</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+</header>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<h1>David's Creation</h1>
+<p>
+Creative Tech • Coding • AI • Games • Design • Innovation
+</p>
+<p>
+A young creator building amazing projects, games,
+AI tools, websites, and digital experiences for the future.
+</p>
+<a href="#projects" class="btn btn-primary">
+View Projects
+</a>
+<a href="#hire" class="btn btn-success">
+Hire Me
+</a>
+</div>
+</section>
+<!-- ABOUT -->
+<section class="section" id="about">
+<h2 class="section-title">
+ABOUT David's Creation
+</h2>
+<div class="about">
+<div class="about-card">
+<h2 style="color:#f59e0b; margin-bottom:20px;">
+Who Is David ?
+</h2>
+<p style="line-height:2;">
+Dave is a young creative developer, coder,
+designer, and tech innovator passionate about
+building games, AI apps, websites, and digital tools.
+</p>
+<br>
+<p style="line-height:2;">
+David's Creation was created to inspire creativity,
+technology, leadership, and innovation among young people.
+</p>
+</div>
+<div class="about-card">
+<h2 style="color:#f59e0b; margin-bottom:20px;">
+Mission
+</h2>
+<p style="line-height:2;">
+To create smart digital projects that educate,
+entertain, and inspire the next generation of creators.
+</p>
+<br>
+<p style="line-height:2;">
+David's Creation combines coding, creativity,
+AI technology, game development, and design
+into one powerful vision.
+</p>
+</div>
+</div>
+</section>
+<!-- PROJECTS -->
+<section class="section" id="projects">
+<h2 class="section-title">
+MY PROJECTS
+</h2>
+<div class="projects">
+<!-- PROJECT 1 -->
+<div class="project-card">
+<div class="project-image">
+🎮
+</div>
+<div class="project-content">
+<h3>Math Tug Of War Game</h3>
+<p>
+A futuristic 3D tug-of-war math game where
+players solve questions to defeat AI opponents.
+Built using advanced animations and interactive gameplay.
+</p>
+<br>
+<p>
+Features:
+</p>
+<ul style="line-height:2;">
+<li>3D Gameplay</li>
+<li>AI Opponent</li>
+<li>Math Challenges</li>
+<li>Animated Characters</li>
+</ul>
+</div>
+</div>
+<!-- PROJECT 2 -->
+<div class="project-card">
+<div class="project-image">
+🧮
+</div>
+<div class="project-content">
+<h3>Ultimate Calculator</h3>
+<p>
+A modern smart calculator with scientific functions,
+voice commands, memory system, keyboard support,
+history tracking, and dark/light themes.
+</p>
+<br>
+<p>
+Features:
+</p>
+<ul style="line-height:2;">
+<li>Scientific Calculator</li>
+<li>Voice Recognition</li>
+<li>Theme Switcher</li>
+<li>Calculation History</li>
+</ul>
+</div>
+</div>
+<!-- PROJECT 3 -->
+<div class="project-card">
+<div class="project-image">
+🤖
+</div>
+<div class="project-content">
+<h3>AI Tutor App</h3>
+<p>
+A smart AI-powered learning app that helps users
+solve math problems, draw graphs, and convert currency.
+</p>
+<br>
+<p>
+Features:
+</p>
+<ul style="line-height:2;">
+<li>AI Math Tutor</li>
+<li>Graph Calculator</li>
+<li>Naira Converter</li>
+<li>Interactive Learning</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- SKILLS -->
+<section class="section" id="skills">
+<h2 class="section-title">
+MY SKILLS
+</h2>
+<div class="skills">
+<div class="skill">
+<h1>💻</h1>
+<h3>Web Development</h3>
+<p>HTML, CSS, JavaScript</p>
+</div>
+<div class="skill">
+<h1>🎮</h1>
+<h3>Game Development</h3>
+<p>Interactive game creation</p>
+</div>
+<div class="skill">
+<h1>🤖</h1>
+<h3>AI Technology</h3>
+<p>Smart apps and AI systems</p>
+</div>
+<div class="skill">
+<h1>🎨</h1>
+<h3>Graphic Design</h3>
+<p>Creative digital designs</p>
+</div>
+</div>
+</section>
+<!-- HIRE ME -->
+<section class="section" id="hire">
+<h2 class="section-title">
+HIRE ME
+</h2>
+<div class="hire-form">
+<h3>Let's Work Together!</h3>
+<p>Fill out the form to send me a direct WhatsApp message.</p>
+<form id="whatsappForm">
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="email" id="email" placeholder="Your Email" required>
+<textarea id="message" placeholder="What are we building?" required></textarea>
+<button type="button" class="btn btn-success" onclick="sendToWhatsApp()" style="width:100%;">Send via WhatsApp</button>
+</form>
+</div>
+</section>
+<!-- CONTACT -->
+<section class="section" id="contact">
+<div class="contact-box">
+<h2 class="section-title">
+CONTACT David's Creation
+</h2>
+<p style="font-size:1.2rem; margin-bottom:30px;">
+Want to work together or learn more about my projects?
+</p>
+<a href="https://wa.me/2347057221413"
+class="btn btn-success">
+Chat On WhatsApp
+</a>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+<h2 style="color:#f59e0b; font-family:'Orbitron',sans-serif;">
+David's Creation
+</h2>
+<p style="margin-top:20px;">
+Creative Tech • AI • Games • Innovation
+</p>
+<p style="margin-top:20px; opacity:0.7;">
+© 2026 Dave's Brand. All Rights Reserved.
+</p>
+</footer>
+
+<script>
+function sendToWhatsApp() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    
+    if (name === "" || email === "" || message === "") {
+        alert("Please fill in all fields!");
+        return;
+    }
+    
+    const phone = "2347057221413";
+    const url = `https://wa.me/${phone}?text=NEW%20INQUIRY%0A%0A*Name:*%20${encodeURIComponent(name)}%0A*Email:*%20${encodeURIComponent(email)}%0A*Message:*%20${encodeURIComponent(message)}`;
+    window.open(url, '_blank').focus();
+}
+</script>
+</body>
+</html>

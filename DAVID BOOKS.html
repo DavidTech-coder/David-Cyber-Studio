@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Reviews by Segun David | Young Reader & Reviewer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Orbitron:wght@400;700&display=swap');
+       
+        :root {
+            --primary: #4f46e5;
+            --accent: #f59e0b;
+        }
+       
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+            color: white;
+            line-height: 1.6;
+        }
+       
+        header {
+            background: rgba(0,0,0,0.8);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+       
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+       
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+       
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('https://picsum.photos/id/1015/1920/1080') center/cover;
+            position: relative;
+        }
+       
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.85);
+        }
+       
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+       
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+       
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: black;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+       
+        .section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+       
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--accent);
+        }
+       
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+       
+        .review-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+       
+        .review-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
+        }
+       
+        .book-cover {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+       
+        .review-content {
+            padding: 25px;
+        }
+       
+        .rating {
+            color: #fbbf24;
+            font-size: 1.4rem;
+            margin: 10px 0;
+        }
+       
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+       
+        .skill-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 180px;
+            border: 2px solid var(--accent);
+        }
+       
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: #020617;
+        }
+       
+        .button {
+            background: var(--accent);
+            color: black;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-block;
+            margin: 20px 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SEGUN DAVID</div>
+            <div> • Book Reviewer • Author • Coder</div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Book Reviews by Segun David</h1>
+            <p style="font-size: 1.5rem; margin: 20px 0;">Honest Reviews from a Young Reader</p>
+            <div class="badge"> • Book Enthusiast • Future Author</div>
+            <p style="font-size: 1.3rem; max-width: 600px; margin: 30px auto;">
+                I read books. I review them. I share what I learn. Join me on my reading journey!
+            </p>
+            <a href="#reviews" class="button">See My Reviews</a>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <h2>About My Reading Journey</h2>
+        <div style="max-width: 700px; margin: 0 auto; text-align: center; font-size: 1.2rem;">
+            <p>I'm Segun David Olowogbon, who loves books as much as I love coding.</p>
+            <p>Through reading, I've discovered new worlds, learned important life lessons, and found inspiration for my own writing.</p>
+            <p><strong>My goal:</strong> To inspire other young people to read more and think deeper.</p>
+        </div>
+    </section>
+
+    <!-- Featured Book Section -->
+    <section class="section" style="background: #1e2937;">
+        <h2>My First Book</h2>
+        <div style="display: flex; gap: 60px; align-items: center; flex-wrap: wrap; max-width: 1000px; margin: 0 auto;">
+            <img src="cc.jpg" alt="Start Small Dream Big" style="border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); width: 320px;">
+            <div style="flex: 1; min-width: 300px;">
+                <h3 style="color: var(--accent); font-size: 2rem;">Start Small, Dream Big</h3>
+                <p style="font-size: 1.2rem; margin: 20px 0;">
+                    A Child's Guide to Success<br>
+                    <strong>Author: Segun David Olowogbon</strong>
+                </p>
+                <p>This inspiring book teaches children how to believe in themselves, stay curious, and chase their dreams.</p>
+                <a href="my book.html" class="button">Learn More About My Book →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Reviews -->
+    <section class="section" id="reviews">
+        <h2>Recent Book Reviews</h2>
+        <div class="review-grid">
+
+            <div class="review-card">
+                <img src="images.JPEG" class="book-cover" alt="Atomic Habits">
+                <div class="review-content">
+                    <h3>Purpose Driven Life </h3>
+                    <p><strong>Rick Warren </strong></p>
+                    <div class="rating">★★★★☆</div>
+                    <p>One of the most practical books I've ever read!</p>
+                   
+                </div>
+            </div>
+
+            <div class="review-card">
+                <img src="images (1).JPEG" class="book-cover" alt="The Alchemist">
+                <div class="review-content">
+                    <h3>Think Big </h3>
+                    <p><strong> Ben Carson </strong></p>
+                    <div class="rating">★★★★★</div>
+                    <p>"Think Big" is an inspiring book that teaches young people to dream boldly and work hard. Dr. Ben Carson shares his journey from a struggling student with poor grades to becoming one of the world’s top neurosurgeons.</p>
+                    
+                </div>
+            </div>
+
+            <div class="review-card">
+                <img src="img.jpg" class="book-cover" alt="Rich Dad Poor Dad">
+                <div class="review-content">
+                    <h3>Rich Dad Poor Dad</h3>
+                    <p><strong>Robert Kiyosaki</strong></p>
+                    <div class="rating">★★★★☆</div>
+                    <p>Changed how I think about money. Every young person should read this!</p>
+            
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section">
+        <h2>My Reading &amp; Reviewing Skills</h2>
+        <div class="skills">
+            <div class="skill-item">
+                <h3>📖 Critical Reading</h3>
+                <p>Analyzing themes, characters & lessons</p>
+            </div>
+            <div class="skill-item">
+                <h3>✍️ Honest Reviews</h3>
+                <p>Clear, thoughtful & age-appropriate</p>
+            </div>
+            <div class="skill-item">
+                <h3>🧠 Life Lessons</h3>
+                <p>Extracting wisdom from every book</p>
+            </div>
+            <div class="skill-item">
+                <h3>🎯 Book Recommendations</h3>
+                <p>For kids & young readers</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2>Want me to review your book?</h2>
+        <p>I'm always open to reading and reviewing new books — especially children's and self-development books.</p>
+        <div>
+            <a href="SUMBMIT BOOK REVIEW" class="button">Submit a Book for Review</a>
+            <a href="my book.html" class="button">My Own Book</a>
+        
+        <p style="margin-top: 40px; opacity: 0.7;">
+            © 2026 Segun David Olowogbon •  Young Book Reviewer<br>
+         Nigeria
+        </p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            document.querySelector('header').style.background =
+                window.scrollY > 100 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.8)';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultimate Calculator</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1a1a1a, #333);
+  font-family: Arial;
+}
+
+body.light {
+  background: linear-gradient(135deg, #f5f5f5, #ddd);
+}
+
+.calculator {
+  width: 320px;
+  padding: 15px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  color: white;
+}
+
+body.light .calculator {
+  background: rgba(0,0,0,0.1);
+  color: black;
+}
+
+#display {
+  width: 100%;
+  height: 60px;
+  font-size: 26px;
+  text-align: right;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: rgba(0,0,0,0.3);
+  color: white;
+}
+
+body.light #display {
+  background: rgba(255,255,255,0.7);
+  color: black;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+button {
+  height: 55px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+}
+
+body.light button {
+  background: rgba(0,0,0,0.1);
+  color: black;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.equal { background: orange; color: black; }
+.clear { background: red; }
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.history {
+  max-height: 80px;
+  overflow-y: auto;
+  font-size: 12px;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+
+  <div class="top-bar">
+    <button onclick="toggleTheme()">🌗</button>
+    <button onclick="startVoice()">🎤</button>
+    <button onclick="clearHistory()" title="Clear History">🧼</button>
+  </div>
+
+  <input type="text" id="display" readonly>
+
+  <div class="buttons">
+    <button class="clear" onclick="clearDisplay()">C</button>
+    <button onclick="del()">⌫</button>
+    <button onclick="append('/')">/</button>
+    <button onclick="append('*')">*</button>
+
+    <button onclick="append('7')">7</button>
+    <button onclick="append('8')">8</button>
+    <button onclick="append('9')">9</button>
+    <button onclick="append('-')">-</button>
+
+    <button onclick="append('4')">4</button>
+    <button onclick="append('5')">5</button>
+    <button onclick="append('6')">6</button>
+    <button onclick="append('+')">+</button>
+
+    <button onclick="append('1')">1</button>
+    <button onclick="append('2')">2</button>
+    <button onclick="append('3')">3</button>
+    <button onclick="append('.')">.</button>
+
+    <button onclick="append('0')">0</button>
+    <button class="equal" onclick="calculate()">=</button>
+
+    <!-- Memory -->
+    <button onclick="memoryAdd()">M+</button>
+    <button onclick="memorySubtract()">M-</button>
+    <button onclick="memoryRecall()">MR</button>
+    <button onclick="memoryClear()">MC</button>
+
+    <!-- Scientific -->
+    <button onclick="sci('sqrt')">√</button>
+    <button onclick="sci('sin')">sin</button>
+    <button onclick="sci('cos')">cos</button>
+    <button onclick="sci('tan')">tan</button>
+  </div>
+
+  <div class="history" id="history"></div>
+</div>
+
+<script>
+const display = document.getElementById("display");
+const historyBox = document.getElementById("history");
+
+// Load history
+window.onload = () => {
+  historyBox.innerHTML = localStorage.getItem("history") || "";
+};
+
+function saveHistory() {
+  localStorage.setItem("history", historyBox.innerHTML);
+}
+
+function append(val) {
+  display.value += val;
+}
+
+function clearDisplay() {
+  display.value = "";
+}
+
+function del() {
+  display.value = display.value.slice(0, -1);
+}
+
+function calculate() {
+  try {
+    let result = eval(display.value);
+    let entry = `<div>${display.value} = ${result}</div>`;
+    historyBox.innerHTML += entry;
+    saveHistory();
+    display.value = result;
+  } catch {
+    display.value = "Error";
+  }
+}
+
+// Scientific
+function sci(type) {
+  let v = parseFloat(display.value);
+  if (isNaN(v)) return;
+
+  let r;
+  if (type === "sqrt") r = Math.sqrt(v);
+  if (type === "sin") r = Math.sin(v);
+  if (type === "cos") r = Math.cos(v);
+  if (type === "tan") r = Math.tan(v);
+
+  let entry = `<div>${type}(${v}) = ${r}</div>`;
+  historyBox.innerHTML += entry;
+  saveHistory();
+  display.value = r;
+}
+
+// Memory
+let memory = 0;
+
+function memoryAdd() {
+  memory += parseFloat(display.value) || 0;
+}
+
+function memorySubtract() {
+  memory -= parseFloat(display.value) || 0;
+}
+
+function memoryRecall() {
+  display.value = memory;
+}
+
+function memoryClear() {
+  memory = 0;
+}
+
+// Theme
+function toggleTheme() {
+  document.body.classList.toggle("light");
+}
+
+// Voice
+function startVoice() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+
+  recognition.onresult = function(event) {
+    let speech = event.results[0][0].transcript.toLowerCase();
+
+    speech = speech
+      .replace(/plus/g, "+")
+      .replace(/minus/g, "-")
+      .replace(/times|multiply|into/g, "*")
+      .replace(/divide/g, "/");
+
+    display.value = speech;
+    calculate();
+  };
+
+  recognition.start();
+}
+
+// Keyboard
+document.addEventListener("keydown", function(e) {
+  if (!isNaN(e.key) || "+-*/.".includes(e.key)) {
+    append(e.key);
+  } else if (e.key === "Enter") {
+    calculate();
+  } else if (e.key === "Backspace") {
+    del();
+  } else if (e.key === "Escape") {
+    clearDisplay();
+  }
+});
+
+// Clear History
+function clearHistory() {
+  historyBox.innerHTML = "";
+  localStorage.removeItem("history");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cyber Studio | Dave's Games & Websites</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --primary:#00f5ff;
+    --secondary:#7c3aed;
+    --dark:#020617;
+    --card:#0f172a;
+    --light:#f8fafc;
+    --accent:#22c55e;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#020617;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND EFFECT */
+
+.cyber-bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
+    background:
+    radial-gradient(circle at top left,#00f5ff22,transparent 30%),
+    radial-gradient(circle at bottom right,#7c3aed22,transparent 30%),
+    #020617;
+}
+
+/* HEADER */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    background:rgba(2,6,23,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav{
+    max-width:1300px;
+    margin:auto;
+    padding:18px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.logo-box{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-text{
+    font-family:'Orbitron',sans-serif;
+    font-size:1.7rem;
+    font-weight:900;
+    color:var(--primary);
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:var(--primary);
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:120px 20px 80px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:5rem;
+    font-family:'Orbitron',sans-serif;
+    line-height:1.1;
+    margin-bottom:20px;
+    background:linear-gradient(to right,#00f5ff,#7c3aed);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    font-size:1.3rem;
+    color:#cbd5e1;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:16px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:700;
+    margin:10px;
+    transition:0.3s;
+}
+
+.btn-primary{
+    background:linear-gradient(to right,#00f5ff,#7c3aed);
+    color:black;
+}
+
+.btn-success{
+    background:var(--accent);
+    color:white;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* SECTION */
+
+.section{
+    max-width:1300px;
+    margin:auto;
+    padding:100px 20px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:60px;
+    font-family:'Orbitron',sans-serif;
+    color:var(--primary);
+}
+
+/* PROJECTS */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.project-card{
+    background:rgba(15,23,42,0.9);
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.4s;
+    position:relative;
+}
+
+.project-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 40px rgba(0,245,255,0.2);
+}
+
+.project-image{
+    height:220px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:5rem;
+    font-family:'Orbitron',sans-serif;
+    background:linear-gradient(135deg,#00f5ff33,#7c3aed33);
+}
+
+.project-content{
+    padding:30px;
+}
+
+.project-content h3{
+    margin-bottom:15px;
+    color:var(--primary);
+}
+
+.project-content p{
+    color:#cbd5e1;
+}
+
+/* SKILLS */
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.skill{
+    background:rgba(15,23,42,0.9);
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.skill h3{
+    margin-top:15px;
+    color:var(--primary);
+}
+
+/* FOOTER */
+
+footer{
+    background:#000;
+    text-align:center;
+    padding:60px 20px;
+    margin-top:80px;
+}
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    nav{
+        justify-content:center;
+        gap:15px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cyber-bg"></div>
+
+<!-- HEADER -->
+
+<header>
+
+<nav>
+
+<div class="logo-box">
+
+<!-- CYBER LOGO -->
+
+<svg width="70" height="70" viewBox="0 0 200 200">
+
+<circle cx="100" cy="100" r="90" fill="#00f5ff"/>
+
+<path d="M60 140V60H110C140 60 155 75 155 100C155 125 140 140 110 140H60Z"
+fill="#020617"/>
+
+<path d="M90 85H110C120 85 127 91 127 100C127 109 120 115 110 115H90V85Z"
+fill="#7c3aed"/>
+
+</svg>
+
+<div class="logo-text">
+CYBER STUDIO
+</div>
+
+</div>
+
+<div>
+<a href="#games">Games</a>
+<a href="#websites">Websites</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</div>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>CYBER STUDIO</h1>
+
+<p>
+The Ultimate Digital Space For Games, Websites,
+Apps, AI Projects, and Creative Technology.
+</p>
+
+<p>
+Built by Dave — Young Developer, Designer,
+Game Creator, and Future Tech Innovator.
+</p>
+
+<a href="#games" class="btn btn-primary">
+Explore Projects
+</a>
+
+<a href="https://wa.me/2347057221413"
+class="btn btn-success">
+Chat On WhatsApp
+</a>
+
+</div>
+
+</section>
+
+<!-- GAMES -->
+
+<section class="section" id="games">
+
+<h2 class="section-title">
+MY GAMES
+</h2>
+
+<div class="projects">
+
+<!-- GAME 1 -->
+
+<div class="project-card">
+
+<div class="project-image">
+🎮
+</div>
+
+<div class="project-content">
+
+<h3>Math Tug Of War</h3>
+
+<p>
+Battle AI opponents in a futuristic math
+challenge game with animations and powers.
+</p>
+
+<br>
+
+<ul style="line-height:2;">
+<li>3D Gameplay</li>
+<li>AI Opponents</li>
+<li>Math Battles</li>
+<li>Power-Ups</li>
+</ul>
+
+<br>
+
+<a href="TUG OF WAR MATH GAME.html"
+class="btn btn-primary">
+Play Game
+</a>
+
+</div>
+
+</div>
+
+<!-- GAME 2 -->
+
+<div class="project-card">
+
+<div class="project-image">
+♙
+</div>
+
+<div class="project-content">
+
+<h3>Chess Arena</h3>
+
+<p>
+A modern chess game with realistic
+players, multiplayer support.
+</p>
+
+<br>
+
+<ul style="line-height:2;">
+<li>3D Players</li>
+<li>Human vs Ai/ Human</li>
+<li> Realistic Board</li>
+<li> Click Controls</li>
+</ul>
+
+<br>
+<a href="Chess arena.html"
+class="btn btn-primary">
+Play Game
+
+</a>
+
+</div>
+
+</div>
+
+<!-- GAME 3 -->
+
+<div class="project-card">
+
+<div class="project-image">
+🚀
+</div>
+
+<div class="project-content">
+
+<h3>Space Runner X</h3>
+
+<p>
+A fast futuristic space game where players
+dodge obstacles and collect power crystals.
+</p>
+
+<br>
+
+<ul style="line-height:2;">
+<li>Space Adventure</li>
+<li>Fast Gameplay</li>
+<li>Power Boosts</li>
+<li>Cyber Graphics</li>
+</ul>
+
+<br>
+
+<a href="space runner x.html"
+class="btn btn-primary">
+Play Game
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- WEBSITES -->
+
+<section class="section" id="websites">
+
+<h2 class="section-title">
+MY WEBSITES
+</h2>
+
+<div class="projects">
+
+<!-- WEBSITE 1 -->
+
+<div class="project-card">
+
+<div class="project-image">
+🌐
+</div>
+
+<div class="project-content">
+
+<h3>AI Tutor Website</h3>
+
+<p>
+An interactive AI learning website with
+smart solving, graphing, and conversions.
+</p>
+
+<br>
+
+<ul style="line-height:2;">
+<li>AI Math Tutor</li>
+<li>Graphs</li>
+<li>Currency Converter</li>
+<li>Interactive Learning</li>
+</ul>
+
+<br>
+
+<a href="AI TUTOR.html"
+class="btn btn-primary">
+Open Website
+</a>
+
+</div>
+
+</div>
+
+<!-- WEBSITE 2 -->
+
+<div class="project-card">
+
+<div class="project-image">
+🧮
+</div>
+
+<div class="project-content">
+
+<h3>Ultimate Calculator</h3>
+
+<p>
+A powerful calculator website with
+scientific tools and smart features.
+</p>
+
+<br>
+
+<ul style="line-height:2;">
+<li>Scientific Mode</li>
+<li>Voice Commands</li>
+<li>Theme Switcher</li>
+<li>Calculation History</li>
+</ul>
+
+<br>
+
+<a href="ULTIMATE CACULATOR.html"
+class="btn btn-primary">
+Open Website
+</a>
+
+</div>
+
+</div>
+
+<!-- WEBSITE 3 -->
+
+<div class="project-card">
+
+<div class="project-image">
+🎨
+</div>
+
+<div class="project-content">
+
+<h3>Portfolio Website</h3>
+
+<p>
+A professional cyber-style portfolio
+showing all projects, skills, and achievements.
+</p>
+
+<br>
+
+<ul style="line-height:2;">
+<li>Cyber UI</li>
+<li>Animations</li>
+<li>Responsive Design</li>
+<li>Modern Layout</li>
+</ul>
+
+<br>
+
+<a href="my portolio.html"
+class="btn btn-primary">
+Open Website
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section class="section" id="skills">
+
+<h2 class="section-title">
+MY SKILLS
+</h2>
+
+<div class="skills">
+
+<div class="skill">
+<h1>💻</h1>
+<h3>Web Development</h3>
+<p>HTML, CSS, JavaScript</p>
+</div>
+
+<div class="skill">
+<h1>🎮</h1>
+<h3>Game Development</h3>
+<p>Interactive gaming systems</p>
+</div>
+
+<div class="skill">
+<h1>🤖</h1>
+<h3>AI Technology</h3>
+<p>Smart AI websites and apps</p>
+</div>
+
+<div class="skill">
+<h1>🎨</h1>
+<h3>Graphic Design</h3>
+<p>Logos, flyers, and cyber designs</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+
+<div style="
+background:linear-gradient(135deg,#0f172a,#111827);
+padding:60px;
+border-radius:30px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.08);
+">
+
+<h2 class="section-title">
+CONTACT CYBER STUDIO
+</h2>
+
+<p style="font-size:1.2rem; margin-bottom:30px;">
+Want to work with Dave or explore more projects?
+</p>
+
+<a href="https://wa.me/2347057221413"
+class="btn btn-success">
+Chat On WhatsApp
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2 style="
+color:#00f5ff;
+font-family:'Orbitron',sans-serif;
+">
+CYBER STUDIO
+</h2>
+
+<p style="margin-top:20px;">
+Games • Websites • AI • Design • Innovation
+</p>
+
+<p style="margin-top:20px; opacity:0.7;">
+© 2026 Cyber Studio. All Rights Reserved.
+</p>
+
+</footer>
+
+</body>
+</html>

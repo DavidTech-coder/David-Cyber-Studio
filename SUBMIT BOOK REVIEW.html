@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Me | Segun David</title>
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); 
+            color: white; 
+            padding: 50px; 
+            text-align: center; 
+        }
+        form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; }
+        input, textarea { 
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border-radius: 10px; 
+            border: none; 
+            font-family: inherit;
+        }
+        button { 
+            background: #f59e0b; 
+            padding: 15px; 
+            border-radius: 50px; 
+            border: none; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        button:hover { background: #d97706; }
+        h1 { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Let's Work Together!</h1>
+    <p>Fill out the form to send me a direct WhatsApp message.</p>
+    
+    <form id="whatsappForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="What are we building?" required></textarea>
+        
+        <button type="button" onclick="sendToWhatsApp()">Send via WhatsApp</button>
+    </form>
+
+    <script>
+        function sendToWhatsApp() {
+            // Get values from the form
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Validate that fields are not empty
+            if (name === "" || email === "" || message === "") {
+                alert("Please fill in all fields!");
+                return;
+            }
+
+            // Your WhatsApp Number
+            const phone = "2347057221413";
+
+            // Construct the message URL
+            const url = `https://wa.me/${phone}?text=NEW%20INQUIRY%0A%0A*Name:*%20${encodeURIComponent(name)}%0A*Email:*%20${encodeURIComponent(email)}%0A*Message:*%20${encodeURIComponent(message)}`;
+
+            // Open in new tab
+            window.open(url, '_blank').focus();
+        }
+    </script>
+</body>
+</html>

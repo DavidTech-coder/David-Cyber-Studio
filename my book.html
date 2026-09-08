@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segun David Olowogbon | Books</title>
+    <style>
+        :root {
+            --primary: #2c5f2d;
+            --accent: #f4a261;
+            --light: #f8f5f0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(to bottom, #f8f5f0, #e8f5e9);
+        }
+        
+        header {
+            background: linear-gradient(rgba(44, 95, 45, 0.92), rgba(44, 95, 45, 0.92)), 
+                        url('https://picsum.photos/1920/800?random=1') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 140px 20px 100px;
+        }
+        .logo {
+            font-size: 3.8rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        .tagline {
+            font-size: 1.45rem;
+            max-width: 720px;
+            margin: 0 auto 40px;
+            font-style: italic;
+        }
+        .hero-books {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .hero-books img {
+            height: 300px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+            transition: transform 0.4s;
+        }
+        .hero-books img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        nav {
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 18px 0;
+            gap: 45px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        nav a:hover { color: var(--accent); }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+            max-width: 1250px;
+            margin: 70px auto;
+            padding: 0 20px;
+        }
+        .book-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            transition: all 0.4s ease;
+        }
+        .book-card:hover {
+            transform: translateY(-18px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.18);
+        }
+        .book-cover {
+            height: 440px;
+            background: #f8f5f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+        }
+        .book-cover img {
+            max-height: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+        .book-info {
+            padding: 28px;
+            text-align: center;
+        }
+        .book-title {
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .buy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 18px;
+            transition: all 0.3s;
+        }
+        .buy-btn:hover {
+            background: #1e4a1f;
+            transform: scale(1.08);
+        }
+
+        section { padding: 90px 20px; }
+        h2 {
+            text-align: center;
+            font-size: 2.9rem;
+            margin-bottom: 60px;
+            color: var(--primary);
+        }
+        .about {
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px 50px;
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        footer {
+            background: #1e4a1f;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-books img { height: 240px; }
+            .logo { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Segun David Olowogbon</div>
+        <p class="tagline">Inspiring children to believe in themselves, cherish their parents, and make life-changing decisions.</p>
+        
+        <div class="hero-books">
+            <img src="E-BOOK.jpg" alt="Start Small Dream Big">
+            <img src="E-BOOK.png" alt="How to Make Your Parents Happy">
+            <img src="427ebe85-6000-4543-b527-7b82167ee4e7.png" alt="The Turning Point">
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#books">Books</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="books">
+        <h2>My Books</h2>
+        <div class="books-grid">
+
+            <!-- Book 1 -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <img src="E-BOOK.jpg" alt="Start Small Dream Big">
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">Start Small, Dream Big</h3>
+                    <p class="book-subtitle">A Child’s Guide to Success</p>
+                    <p>A fun and friendly book packed with stories, tips, and activities to help children believe in themselves and chase their dreams.</p>
+                    <button onclick="alert('Thank you! PDF available. Contact me to purchase.')" class="buy-btn">Get This Book</button>
+                </div>
+            </div>
+
+            <!-- Book 2 -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <img src="E-BOOK.png" alt="How to Make Your Parents Happy">
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">How to Make Your Parents Happy</h3>
+                    <p class="book-subtitle">A Heartfelt Guide to Love & Gratitude</p>
+                    <p>Simple, practical ways for children to show love and appreciation to their parents every day.</p>
+                    <button onclick="alert('Thank you! PDF available. Contact me to purchase.')" class="buy-btn">Get This Book</button>
+                </div>
+            </div>
+
+            <!-- Book 3: The Turning Point -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <img src="427ebe85-6000-4543-b527-7b82167ee4e7.png" alt="The Turning Point">
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">The Turning Point</h3>
+                    <p class="book-subtitle">One Village. Two Paths. One Turning Point.</p>
+                    <p>A powerful story about choices, consequences, and the life-changing moments that shape our destiny.</p>
+                    <button onclick="alert('Thank you! The Turning Point is now available. Contact me to purchase.')" class="buy-btn">Get This Book</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About the Author</h2>
+        <p style="font-size: 1.25rem; max-width: 750px; margin: 0 auto 35px;">
+            Segun David Olowogbon is a passionate young author from Nigeria. 
+            Inspired by his parents — Dr. Toyin Samuel Olowogbon and Mrs. Omolola Faith Olowogbon — 
+            he writes meaningful stories that empower children, strengthen families, and inspire wise decisions.
+        </p>
+        <p style="font-style: italic; font-size: 1.3rem; color: var(--primary);">
+            “You don’t have to wait to be a success someday — you already are.”
+        </p>
+    </section>
+
+    <section id="contact" style="background: var(--light); text-align: center;">
+        <h2>Let's Connect</h2>
+        <p style="max-width: 600px; margin: 0 auto 30px; font-size: 1.2rem;">
+            For purchases, school visits, speaking engagements, or bulk orders:
+        </p>
+        <p><strong>Email:</strong> segundavidolowogbon@gmail.com</p>
+        <p><strong>Location:</strong>  Nigeria</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Segun David Olowogbon. All Rights Reserved.</p>
+        <p>Made with ❤️ to inspire the next generation</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#home') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

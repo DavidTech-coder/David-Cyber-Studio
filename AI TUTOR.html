@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart Math App</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#020617,#0f172a);
+    color:white;
+    min-height:100vh;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+}
+
+/* LOGO */
+
+.logo{
+    width:100px;
+    height:100px;
+    border-radius:20px;
+    object-fit:cover;
+    margin-bottom:15px;
+    box-shadow:0 0 25px #00bfff;
+}
+
+h2{
+    color:#00bfff;
+    margin-bottom:20px;
+}
+
+/* NAVIGATION */
+
+.nav{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.nav button{
+    flex:1;
+    background:#1e293b;
+    color:white;
+    border:1px solid #00bfff;
+}
+
+.nav button:hover{
+    background:#00bfff;
+    color:black;
+}
+
+/* SECTIONS */
+
+.section{
+    display:none;
+}
+
+.active{
+    display:block;
+}
+
+/* INPUTS */
+
+input,
+select{
+    width:100%;
+    padding:14px;
+    margin:8px 0;
+    border:none;
+    border-radius:12px;
+    background:#1e293b;
+    color:white;
+    font-size:16px;
+}
+
+/* BUTTONS */
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#00bfff;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:10px;
+    transition:.3s;
+}
+
+button:hover{
+    background:#38bdf8;
+    transform:translateY(-2px);
+}
+
+/* OUTPUT */
+
+.output{
+    margin-top:15px;
+    background:#1e293b;
+    border:1px solid #00bfff;
+    border-radius:15px;
+    padding:15px;
+    text-align:left;
+}
+
+/* GRAPH */
+
+canvas{
+    background:white;
+    border-radius:15px;
+    margin-top:15px;
+}
+
+/* RESULT */
+
+#result{
+    margin-top:20px;
+    font-size:24px;
+    color:#00ff99;
+    font-weight:bold;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .nav{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="logo.png" alt="Logo" class="logo">
+
+<h2>🧠 Smart Math App</h2>
+
+<!-- NAVIGATION -->
+
+<div class="nav">
+    <button onclick="show('tutor')">📚 Tutor</button>
+    <button onclick="show('graph')">📊 Graph</button>
+    <button onclick="show('currency')">💱 Converter</button>
+</div>
+
+<!-- AI TUTOR -->
+
+<div id="tutor" class="section active">
+
+<h3>AI Math Tutor</h3>
+
+<input
+type="text"
+id="input"
+placeholder="Example: 2x + 3x or 5+7">
+
+<button onclick="solve()">
+Solve Question
+</button>
+
+<div class="output" id="steps">
+Enter a math problem above.
+</div>
+
+</div>
+
+<!-- GRAPH -->
+
+<div id="graph" class="section">
+
+<h3>Graph Calculator</h3>
+
+<input
+type="text"
+id="func"
+placeholder="Example: x*x">
+
+<button onclick="drawGraph()">
+Draw Graph
+</button>
+
+<canvas id="chart" height="250"></canvas>
+
+</div>
+
+<!-- CURRENCY -->
+
+<div id="currency" class="section">
+
+<h3>Naira Converter</h3>
+
+<input
+type="number"
+id="amount"
+placeholder="Enter Amount">
+
+<select id="currencyType">
+<option value="USD">USD</option>
+<option value="GBP">GBP</option>
+<option value="EUR">EUR</option>
+</select>
+
+<button onclick="convertLive()">
+Convert to Naira
+</button>
+
+<p id="result"></p>
+
+</div>
+
+</div>
+
+<script>
+
+/* NAVIGATION */
+
+function show(section){
+
+document
+.querySelectorAll(".section")
+.forEach(s=>s.classList.remove("active"));
+
+document
+.getElementById(section)
+.classList.add("active");
+
+}
+
+/* AI TUTOR */
+
+function solve(){
+
+let exp =
+document.getElementById("input").value;
+
+let steps = "";
+
+if(exp.includes("x") && exp.includes("+")){
+
+let match =
+exp.match(/(\d*)x\s*\+\s*(\d*)x/);
+
+if(match){
+
+let a =
+parseInt(match[1] || 1);
+
+let b =
+parseInt(match[2] || 1);
+
+let result =
+(a+b)+"x";
+
+steps = `
+<b>Step 1:</b> Identify like terms<br><br>
+<b>Step 2:</b> Add coefficients<br>
+${a} + ${b} = ${a+b}<br><br>
+<b>Final Answer:</b> ${result}
+`;
+
+}
+
+}else{
+
+try{
+
+let result =
+Function('"use strict";return (' + exp + ')')();
+
+steps =
+`<b>Answer:</b> ${result}`;
+
+}catch{
+
+steps =
+"❌ Invalid Expression";
+
+}
+
+}
+
+document.getElementById("steps").innerHTML =
+steps;
+
+}
+
+/* GRAPH */
+
+let graph;
+
+function drawGraph(){
+
+let func =
+document.getElementById("func").value;
+
+let x=[];
+let y=[];
+
+for(let i=-10;i<=10;i++){
+
+x.push(i);
+
+try{
+
+y.push(
+Function("x","return "+func)(i)
+);
+
+}catch{
+
+y.push(null);
+
+}
+
+}
+
+if(graph){
+graph.destroy();
+}
+
+graph =
+new Chart(
+document.getElementById("chart"),
+{
+type:'line',
+
+data:{
+labels:x,
+
+datasets:[{
+label:func,
+data:y,
+borderColor:'#00bfff',
+backgroundColor:'rgba(0,191,255,.2)',
+fill:true,
+tension:.3
+}]
+},
+
+options:{
+responsive:true
+}
+
+});
+
+}
+
+/* CURRENCY */
+
+async function convertLive(){
+
+let amount =
+document.getElementById("amount").value;
+
+let currency =
+document.getElementById("currencyType").value;
+
+try{
+
+let response =
+await fetch(
+`https://api.exchangerate-api.com/v4/latest/${currency}`
+);
+
+let data =
+await response.json();
+
+let rate =
+data.rates["NGN"];
+
+let result =
+amount * rate;
+
+document.getElementById("result")
+.innerHTML =
+"₦ " +
+result.toLocaleString();
+
+}catch{
+
+document.getElementById("result")
+.innerHTML =
+"❌ Network Error";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

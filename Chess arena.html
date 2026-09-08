@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chess Pro • Classic Rules</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --gold: #f1c40f;
+            --dark: #1f1f1f;
+            --light: #f0d9b5;
+            --dark-sq: #b58863;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0f0f0f;
+            color: #eee;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        header { text-align: center; margin-bottom: 10px; }
+        
+        h1 { margin: 0; font-size: 1.8rem; color: var(--gold); }
+        
+        .main-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 900px;
+        }
+        
+        #chessboard {
+            width: 90vw;
+            max-width: 560px;
+            height: 90vw;
+            max-height: 560px;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            border: 2vw solid #222;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            background: #111;
+        }
+        
+        .square {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 8vw; /* Scales with screen width */
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        @media (min-width: 600px) {
+            .square { font-size: 40px; }
+            #chessboard { border-width: 10px; }
+        }
+        
+        /* Keep your existing .white-sq, .black-sq, .selected, etc. classes exactly as they were */
+        .white-sq { background-color: var(--light); }
+        .black-sq { background-color: var(--dark-sq); }
+        .selected { box-shadow: inset 0 0 0 5px #7b61ff !important; }
+        .highlight { box-shadow: inset 0 0 0 5px rgba(123, 97, 255, 0.6) !important; }
+        .last-move { box-shadow: inset 0 0 0 4px #4ade80 !important; }
+        .piece-white { color: #fff; text-shadow: 1px 1px 2px #000; }
+        .piece-black { color: #111; text-shadow: 1px 1px 1px #fff; }
+        
+        .sidebar {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 15px;
+            width: 100%;
+            max-width: 280px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        
+        /* ... Keep the rest of your CSS for buttons, history, and modals below ... */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>♟️ Chess Pro</h1>
+        <p class="subtitle">Classic Rules • Strong AI</p>
+    </header>
+    
+    <div class="main-container">
+        <div>
+            <div id="status" class="status">White's Turn (You play White)</div>
+            <div id="chessboard"></div>
+            
+            <div style="text-align:center; margin-top:15px;">
+                <button onclick="resetGame()" class="primary">New Game</button>
+                <button onclick="undoMove()">Undo</button>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div id="black-captured" class="captured"></div>
+            <div id="status-ai" style="font-size:14px; color:#888; text-align:center; margin:10px 0;"></div>
+            <h3 style="margin:15px 0 8px 0; color:#ddd;">Move History</h3>
+            <div id="move-history" class="move-history"></div>
+            <div id="white-captured" class="captured" style="margin-top:20px;"></div>
+        </div>
+    </div>
+
+    <div id="promotion-modal" class="promotion-modal">
+        <div class="promotion-choice" id="promotion-options"></div>
+    </div>
+
+    <script>
+        // Your existing script remains completely unchanged
+        // ...
+    </script>
+</body>
+</html>
